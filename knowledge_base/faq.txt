@@ -1,0 +1,77 @@
+ASSISTLY FREQUENTLY ASKED QUESTIONS
+
+ACCOUNT & BILLING:
+
+Q: How do I change my plan?
+A: Go to Settings > Billing > Change Plan. Upgrades are immediate, downgrades at next cycle.
+
+Q: Can I cancel anytime?
+A: Yes, all plans are month-to-month. Cancel in Settings > Billing > Cancel Subscription.
+
+Q: Do you offer discounts?
+A: Yes! Annual plans get 20% off. Nonprofits and educational institutions get 30% off. Contact sales for volume discounts.
+
+Q: What happens if I exceed storage?
+A: You'll get email warnings at 80% and 95%. At 100%, uploads are blocked until you upgrade or delete files.
+
+Q: Can I get a refund?
+A: Full refund within 14 days of first purchase. After that, no refunds but you can cancel anytime.
+
+TECHNICAL:
+
+Q: Is my data safe?
+A: Yes. We use bank-level encryption, regular backups, and are SOC 2 certified.
+
+Q: Can I export my data?
+A: Yes, anytime. Go to Settings > Data > Export. You'll get a .zip file with all your data.
+
+Q: What browsers do you support?
+A: Chrome, Firefox, Safari, Edge (latest 2 versions). IE11 not supported.
+
+Q: Is there a desktop app?
+A: Yes, available for Windows, Mac, and Linux. Download from assistly.com/downloads
+
+Q: Do you have an API?
+A: Yes, all plans include API access. Docs at docs.assistly.com/api
+
+FEATURES:
+
+Q: Can I invite team members?
+A: Yes. Basic: 3 members, Pro: 15 members, Enterprise: unlimited.
+
+Q: Do you integrate with other tools?
+A: Pro and Enterprise plans integrate with Slack, Microsoft Teams, Google Workspace, Salesforce, and 100+ apps via Zapier.
+
+Q: Is there a mobile app?
+A: Yes, for iOS and Android. Free for all plan levels.
+
+Q: Can I use it offline?
+A: Pro and Enterprise plans have offline mode. Basic requires internet.
+
+Q: Do you offer training?
+A: Free video tutorials for all users. Enterprise gets personalized onboarding and training sessions.
+
+SUPPORT:
+
+Q: How do I contact support?
+A: Email: support@assistly.com, Live chat (Pro/Enterprise), Phone (Enterprise only)
+
+Q: What are support hours?
+A: Basic: Business hours. Pro: 24/7. Enterprise: 24/7 with dedicated manager.
+
+Q: How fast do you respond?
+A: Basic: 24-48 hours. Pro: 4-8 hours. Enterprise: < 1 hour.
+
+PRIVACY & COMPLIANCE:
+
+Q: Where is my data stored?
+A: US/EU data centers (you choose during signup). Enterprise can request specific regions.
+
+Q: Are you GDPR compliant?
+A: Yes, fully GDPR, CCPA, and SOC 2 compliant.
+
+Q: Can I delete my data?
+A: Yes, request deletion anytime. Data permanently deleted within 30 days.
+
+Q: Do you sell my data?
+A: Never. We don't sell or share your data with third parties.

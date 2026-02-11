@@ -1,0 +1,14 @@
+langchain
+langgraph
+langchain-community
+langchain-ollama
+psycopg2-binary
+chromadb
+sentence-transformers
+pypdf
+python-docx
+beautifulsoup4
+streamlit
+python-dotenv
+pydantic
+tiktoken

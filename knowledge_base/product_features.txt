@@ -1,0 +1,83 @@
+ASSISTLY PRODUCT FEATURES & PLANS
+
+BASIC PLAN ($9.99/month):
+✓ Email support (24-48 hour response)
+✓ 5GB cloud storage
+✓ Up to 3 team members
+✓ Basic analytics dashboard
+✓ Mobile app access
+✓ API access (100 requests/hour)
+✓ Standard security (SSL encryption)
+✗ No priority support
+✗ No advanced features
+
+PRO PLAN ($29.99/month):
+✓ 24/7 live chat and email support
+✓ 50GB cloud storage
+✓ Up to 15 team members
+✓ Advanced analytics with custom reports
+✓ Mobile app with offline mode
+✓ API access (1000 requests/hour)
+✓ Advanced security (2FA, SSO)
+✓ Priority queue (2x faster response)
+✓ Custom integrations (Slack, Zapier, Webhooks)
+✓ Automated workflows
+✓ Team collaboration features
+✓ Video call support
+
+ENTERPRISE PLAN ($99.99/month):
+✓ Dedicated account manager
+✓ Unlimited cloud storage
+✓ Unlimited team members
+✓ White-label options
+✓ Custom analytics dashboards
+✓ Desktop, mobile, and web apps
+✓ Unlimited API access
+✓ Enterprise-grade security (audit logs, compliance)
+✓ Instant support (< 1 hour response)
+✓ Custom integrations development
+✓ Advanced automation with AI
+✓ Private cloud deployment option
+✓ SLA guarantees (99.9% uptime)
+✓ Custom training sessions
+✓ Quarterly business reviews
+
+KEY FEATURES ACROSS ALL PLANS:
+
+Data Security:
+- All data encrypted at rest and in transit
+- Regular security audits
+- GDPR and CCPA compliant
+- Data backups every 6 hours
+- Enterprise: Custom data retention policies
+
+Integrations:
+- Basic: Limited integrations
+- Pro: Slack, Microsoft Teams, Google Workspace, Zapier
+- Enterprise: Custom integrations + dedicated API support
+
+Support Channels:
+- Basic: Email only
+- Pro: Email + Live chat
+- Enterprise: Email + Chat + Phone + Video + Dedicated manager
+
+Analytics:
+- Basic: Standard metrics (usage, storage)
+- Pro: Custom reports, export data, trend analysis
+- Enterprise: Real-time dashboards, predictive analytics, custom KPIs
+
+Mobile Experience:
+- All plans: iOS and Android apps
+- Pro/Enterprise: Offline mode, push notifications, biometric login
+
+Collaboration:
+- Basic: Comments and basic sharing
+- Pro: Real-time collaboration, version control, @mentions
+- Enterprise: Advanced permissions, approval workflows, audit trails
+
+Add-ons Available:
+- Additional storage: $5/month per 10GB
+- Extra team members: $8/month per user (Basic/Pro only)
+- Premium support upgrade: $50/month (Basic plan only)
+- Custom domain: $15/month
+- Advanced analytics module: $30/month (Pro plan)

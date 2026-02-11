@@ -1,0 +1,60 @@
+ASSISTLY TECHNICAL TROUBLESHOOTING GUIDE
+
+Login Issues:
+1. Check if email is correct (case-sensitive)
+2. Try password reset via "Forgot Password"
+3. Clear browser cache and cookies
+4. Try incognito/private mode
+5. Check if account is suspended due to payment
+6. Try different browser
+7. If all fails, contact support with error message screenshot
+
+Slow Performance:
+Common causes:
+- Large file uploads in progress
+- Browser extensions interfering (try disabling)
+- Poor internet connection
+- Server maintenance (check status.assistly.com)
+- Too many open tabs
+
+Solutions:
+- Close unused tabs
+- Disable browser extensions temporarily
+- Check internet speed (need min 5 Mbps)
+- Try different network/WiFi
+- Use desktop app instead of web browser
+
+File Upload Failures:
+- Maximum file size: Basic (100MB), Pro (500MB), Enterprise (5GB)
+- Supported formats: PDF, DOCX, XLSX, PNG, JPG, MP4
+- Check file isn't corrupted (try opening locally)
+- Ensure storage quota not exceeded
+- Try compressing large files
+
+Dashboard Not Loading:
+1. Refresh page (Ctrl+F5 / Cmd+Shift+R)
+2. Check browser console for errors (F12)
+3. Verify internet connection
+4. Try different browser
+5. Check status.assistly.com for incidents
+
+API Integration Issues:
+- Verify API key is valid (regenerate if needed)
+- Check rate limits (Basic: 100/hour, Pro: 1000/hour, Enterprise: Unlimited)
+- Ensure correct endpoint URLs
+- Check request format matches API documentation
+- Review error codes in response
+
+Mobile App Issues:
+- Update to latest version (check app store)
+- Clear app cache in settings
+- Logout and login again
+- Reinstall app if persistent issues
+- Check app permissions (camera, storage, notifications)
+
+Data Sync Problems:
+- Check last sync timestamp in settings
+- Force sync by pulling down on dashboard
+- Verify internet connection is stable
+- For Enterprise, check if custom sync schedule is configured
+- Wait 5 minutes and retry (temporary sync delays normal)

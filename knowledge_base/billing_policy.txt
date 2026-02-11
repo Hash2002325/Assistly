@@ -1,0 +1,32 @@
+ASSISTLY BILLING POLICIES
+
+Payment Methods:
+We accept credit cards (Visa, Mastercard, AmEx), PayPal, and wire transfers for Enterprise plans.
+
+Billing Cycles:
+- Basic Plan: $9.99/month, billed monthly
+- Pro Plan: $29.99/month, billed monthly  
+- Enterprise Plan: $99.99/month, billed monthly or annually
+
+Failed Payments:
+If a payment fails, we will retry 3 times over 7 days. After that, the account is suspended. No data is deleted during suspension. Customers have 30 days to update payment method before account deletion.
+
+Refund Policy:
+- Full refund within 14 days of initial purchase
+- Pro-rated refunds for annual plans if cancelled mid-year
+- No refunds for monthly plans after 14 days
+- Enterprise plans have custom refund terms
+
+Double Charging:
+If you see duplicate charges, contact support immediately. We will investigate within 24 hours and issue refunds within 3-5 business days if confirmed.
+
+Upgrading/Downgrading:
+- Upgrades take effect immediately, you pay the difference pro-rated
+- Downgrades take effect at next billing cycle
+- Enterprise upgrades require manual approval
+
+Invoice Access:
+All invoices are available in your account dashboard under Billing > Invoices. You can download PDFs for accounting purposes.
+
+Payment Disputes:
+Contact support@assistly.com within 60 days of charge. Provide invoice number and reason for dispute.

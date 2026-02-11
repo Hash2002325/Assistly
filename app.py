@@ -1,5 +1,5 @@
 """
-Enhanced Assistly UI with multiple tabs
+Assistly - Streamlit Web Interface with Conversation Memory
 """
 import streamlit as st
 from graph.workflow import run_assistly
@@ -39,6 +39,7 @@ tab1, tab2, tab3, tab4 = st.tabs(["💬 Chat", "🎫 Tickets", "💳 Billing", "
 
 with tab1:
     st.header("Chat with AI Support")
+    st.caption("🧠 Conversation memory enabled - the agent remembers your chat history")
     
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -53,14 +54,18 @@ with tab1:
             st.markdown(prompt)
         
         with st.chat_message("assistant"):
-            with st.spinner("Processing..."):
-                response = run_assistly(customer_id=customer_id, query=prompt)
+            with st.spinner("🤔 Processing your request..."):
+                response = run_assistly(
+                    customer_id=customer_id, 
+                    query=prompt,
+                    history=st.session_state.messages
+                )
             st.markdown(response)
         
         st.session_state.messages.append({"role": "assistant", "content": response})
     
     if st.session_state.messages:
-        if st.button("Clear Chat"):
+        if st.button("🗑️ Clear Chat"):
             st.session_state.messages = []
             st.rerun()
 
@@ -86,7 +91,7 @@ with tab3:
     
     if billing:
         for record in billing:
-            status_emoji = "✅" if record['status'] == 'paid' else "❌"
+            status_emoji = "✅" if record['status'] == 'paid' else "❌" if record['status'] == 'failed' else "⏳"
             with st.expander(f"{status_emoji} {record['billing_date']} - ${record['amount']}"):
                 st.write(f"**Invoice:** {record['invoice_number']}")
                 st.write(f"**Status:** {record['status']}")
@@ -99,18 +104,32 @@ with tab4:
     st.markdown("""
     ### 🤖 AI-Powered Multi-Agent Customer Support
     
+    **Version 2.0 - Now with Conversation Memory!**
+    
     **Features:**
-    - Intelligent query routing
-    - Specialized agents (Billing, Technical, Sales)
-    - RAG-powered knowledge base
-    - Real-time database access
+    - ✅ Intelligent query routing
+    - ✅ Specialized agents (Billing, Technical, Sales)
+    - ✅ RAG-powered knowledge base
+    - ✅ Real-time database access
+    - ✅ **NEW: Conversation memory** - Agents remember your chat history
     
-    **Tech Stack:**
-    - LangChain & LangGraph
-    - Ollama (Llama 3.1)
-    - PostgreSQL
-    - ChromaDB
-    - Streamlit
+    **How Conversation Memory Works:**
+    The system now maintains context across messages. When you ask a follow-up question,
+    the agent remembers what you said before and responds accordingly.
     
-    **Version:** 1.0.0
+    **Example:**
+    - You: "I can't login"
+    - Agent: "Let me help you troubleshoot..."
+    - You: "Wrong password, using Chrome"
+    - Agent: "Based on your previous message about login issues and now knowing you're using Chrome..." ✨
+    
+    **Version:** 2.0.0 (with memory)
     """)
+
+# Footer - Production Style
+st.markdown("---")
+st.markdown("""
+<div style='text-align: center; color: gray;'>
+    <p>Assistly 2026</p>
+</div>
+""", unsafe_allow_html=True)

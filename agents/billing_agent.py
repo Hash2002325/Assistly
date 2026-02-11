@@ -5,6 +5,7 @@ from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage, SystemMessage
 from database.db_manager import DatabaseManager
 from rag.retriever import RAGRetriever
+from typing import List, Dict
 import os
 from dotenv import load_dotenv
 
@@ -35,12 +36,13 @@ Guidelines:
 - Provide specific invoice numbers and dates
 - Offer concrete solutions, not just explanations
 - Escalate complex issues to human support if needed
+- If this is a follow-up message, acknowledge previous conversation
 
 Tone: Professional, empathetic, solution-oriented
 """
     
-    def handle_query(self, customer_id: str, query: str) -> str:
-        """Handle billing-related query"""
+    def handle_query(self, customer_id: str, query: str, history: List[Dict] = None) -> str:
+        """Handle billing-related query with conversation history"""
         
         # Get customer data
         customer = self.db.get_customer(customer_id)
@@ -54,9 +56,19 @@ Tone: Professional, empathetic, solution-oriented
         # Get relevant knowledge from RAG
         knowledge_context = self.retriever.retrieve_for_billing(query)
         
+        # Format conversation history
+        history_text = ""
+        if history and len(history) > 0:
+            history_text = "PREVIOUS CONVERSATION:\n"
+            # Show last 6 messages (3 exchanges)
+            for msg in history[-6:]:
+                role = "Customer" if msg['role'] == 'user' else "Agent"
+                history_text += f"{role}: {msg['content']}\n"
+            history_text += "\n"
+        
         # Build context
         context = f"""
-CUSTOMER INFORMATION:
+{history_text}CUSTOMER INFORMATION:
 - Name: {customer['name']}
 - Email: {customer['email']}
 - Current Plan: {customer['plan']}
@@ -70,8 +82,13 @@ FAILED PAYMENTS:
 RELEVANT POLICIES:
 {knowledge_context}
 
-CUSTOMER QUERY:
+CURRENT CUSTOMER MESSAGE:
 {query}
+
+INSTRUCTIONS:
+- If this is a follow-up to previous conversation, acknowledge the context
+- Answer the current question while considering conversation history
+- Be conversational and natural
 """
         
         messages = [

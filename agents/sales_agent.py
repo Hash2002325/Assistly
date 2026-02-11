@@ -5,6 +5,7 @@ from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage, SystemMessage
 from database.db_manager import DatabaseManager
 from rag.retriever import RAGRetriever
+from typing import List, Dict
 import os
 from dotenv import load_dotenv
 
@@ -37,12 +38,13 @@ Guidelines:
 - Be honest about limitations of each plan
 - Provide specific pricing and feature details
 - Make it easy to take next steps
+- Remember what you've already explained in the conversation
 
 Tone: Friendly, helpful, value-focused
 """
     
-    def handle_query(self, customer_id: str, query: str) -> str:
-        """Handle sales/product query"""
+    def handle_query(self, customer_id: str, query: str, history: List[Dict] = None) -> str:
+        """Handle sales/product query with conversation history"""
         
         # Get customer data
         customer = self.db.get_customer(customer_id)
@@ -58,9 +60,18 @@ Tone: Friendly, helpful, value-focused
         # Get product info from RAG
         knowledge_context = self.retriever.retrieve_for_sales(query)
         
+        # Format conversation history
+        history_text = ""
+        if history and len(history) > 0:
+            history_text = "PREVIOUS CONVERSATION:\n"
+            for msg in history[-6:]:
+                role = "Customer" if msg['role'] == 'user' else "Agent"
+                history_text += f"{role}: {msg['content']}\n"
+            history_text += "\n"
+        
         # Build context
         context = f"""
-CUSTOMER INFORMATION:
+{history_text}CUSTOMER INFORMATION:
 - Name: {customer['name']}
 - Current Plan: {current_plan['plan_name']} (${current_plan['price']}/{current_plan['billing_cycle']})
 
@@ -70,8 +81,13 @@ ALL AVAILABLE PLANS:
 PRODUCT INFORMATION:
 {knowledge_context}
 
-CUSTOMER QUESTION:
+CURRENT CUSTOMER MESSAGE:
 {query}
+
+INSTRUCTIONS:
+- If customer asked follow-up questions, answer them in context of previous discussion
+- Be conversational and remember what you've already explained
+- Don't repeat information unless asked
 """
         
         messages = [

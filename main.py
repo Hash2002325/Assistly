@@ -1,34 +1,60 @@
 """
-Main entry point to test Assistly
+Main entry point to test Assistly with conversation memory
 """
 from graph.workflow import run_assistly
 
 if __name__ == "__main__":
-    # Test cases
-    test_cases = [
-        {
-            "customer_id": "CUST001",
-            "query": "I was charged twice for my subscription this month!"
-        },
-        {
-            "customer_id": "CUST002",
-            "query": "I can't login to my account, getting an error message"
-        },
-        {
-            "customer_id": "CUST003",
-            "query": "What features are included in the Enterprise plan?"
-        }
-    ]
+    print("\n" + "="*70)
+    print("TESTING ASSISTLY WITH CONVERSATION MEMORY")
+    print("="*70)
     
-    for i, test in enumerate(test_cases, 1):
-        print(f"\n\n{'#' * 70}")
-        print(f"TEST CASE {i}")
-        print(f"{'#' * 70}\n")
-        
-        response = run_assistly(
-            customer_id=test['customer_id'],
-            query=test['query']
-        )
-        
-        print(f"\n📝 Response:\n{response}\n")
-        input("\nPress Enter to continue to next test...")
+    # Simulate a conversation with memory
+    customer_id = "CUST002"
+    conversation_history = []
+    
+    # First message
+    print("\n" + "="*70)
+    print("MESSAGE 1: Initial Query")
+    print("="*70)
+    query1 = "I can't login to my account"
+    print(f"\n👤 Customer: {query1}")
+    response1 = run_assistly(customer_id, query1, conversation_history)
+    print(f"\n🤖 Agent: {response1}\n")
+    
+    # Add to history
+    conversation_history.append({"role": "user", "content": query1})
+    conversation_history.append({"role": "assistant", "content": response1})
+    
+    input("\n[Press Enter to continue to next message...]")
+    
+    # Second message (follow-up with context)
+    print("\n" + "="*70)
+    print("MESSAGE 2: Follow-up with Additional Info")
+    print("="*70)
+    query2 = "Wrong password and I'm using Chrome browser"
+    print(f"\n👤 Customer: {query2}")
+    response2 = run_assistly(customer_id, query2, conversation_history)
+    print(f"\n🤖 Agent: {response2}\n")
+    
+    # Add to history
+    conversation_history.append({"role": "user", "content": query2})
+    conversation_history.append({"role": "assistant", "content": response2})
+    
+    input("\n[Press Enter to continue to next message...]")
+    
+    # Third message (further follow-up)
+    print("\n" + "="*70)
+    print("MESSAGE 3: Another Follow-up")
+    print("="*70)
+    query3 = "Yes, I already tried the forgot password option"
+    print(f"\n👤 Customer: {query3}")
+    response3 = run_assistly(customer_id, query3, conversation_history)
+    print(f"\n🤖 Agent: {response3}\n")
+    
+    print("\n" + "="*70)
+    print("✅ CONVERSATION MEMORY TEST COMPLETE!")
+    print("="*70)
+    print("\nNotice how the agent remembers:")
+    print("- The login issue from message 1")
+    print("- Browser and password info from message 2")
+    print("- References previous troubleshooting attempts")

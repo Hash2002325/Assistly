@@ -5,6 +5,7 @@ from langchain_ollama import ChatOllama
 from langchain_core.messages import HumanMessage, SystemMessage
 from database.db_manager import DatabaseManager
 from rag.retriever import RAGRetriever
+from typing import List, Dict
 import os
 from dotenv import load_dotenv
 
@@ -36,12 +37,13 @@ Guidelines:
 - Reference specific error messages or symptoms
 - Offer alternative solutions if first doesn't work
 - Create support tickets for unresolved issues
+- If customer provides information in response to your questions, acknowledge it and continue troubleshooting
 
 Tone: Patient, helpful, technically accurate
 """
     
-    def handle_query(self, customer_id: str, query: str) -> str:
-        """Handle technical support query"""
+    def handle_query(self, customer_id: str, query: str, history: List[Dict] = None) -> str:
+        """Handle technical support query with conversation history"""
         
         # Get customer data
         customer = self.db.get_customer(customer_id)
@@ -54,9 +56,18 @@ Tone: Patient, helpful, technically accurate
         # Get troubleshooting guides from RAG
         knowledge_context = self.retriever.retrieve_for_technical(query)
         
+        # Format conversation history
+        history_text = ""
+        if history and len(history) > 0:
+            history_text = "PREVIOUS CONVERSATION:\n"
+            for msg in history[-6:]:
+                role = "Customer" if msg['role'] == 'user' else "Agent"
+                history_text += f"{role}: {msg['content']}\n"
+            history_text += "\n"
+        
         # Build context
         context = f"""
-CUSTOMER INFORMATION:
+{history_text}CUSTOMER INFORMATION:
 - Name: {customer['name']}
 - Plan: {customer['plan']} (determines available features)
 
@@ -66,8 +77,13 @@ PAST TECHNICAL ISSUES:
 TROUBLESHOOTING GUIDES:
 {knowledge_context}
 
-CUSTOMER ISSUE:
+CURRENT CUSTOMER MESSAGE:
 {query}
+
+INSTRUCTIONS:
+- If customer provided information in response to your previous questions, acknowledge it
+- Continue troubleshooting based on conversation history
+- Be patient and guide them step-by-step
 """
         
         messages = [

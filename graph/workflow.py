@@ -11,6 +11,7 @@ from graph.nodes import (
     handle_sales,
     determine_route
 )
+from typing import List, Dict
 
 def create_assistly_workflow():
     """Create the LangGraph workflow"""
@@ -48,13 +49,14 @@ def create_assistly_workflow():
     
     return app
 
-def run_assistly(customer_id: str, query: str) -> str:
+def run_assistly(customer_id: str, query: str, history: List[Dict] = None) -> str:
     """
-    Main function to run Assistly workflow
+    Main function to run Assistly workflow with conversation memory
     
     Args:
         customer_id: Customer identifier (e.g., 'CUST001')
         query: Customer's question or issue
+        history: List of previous messages [{"role": "user/assistant", "content": "..."}]
     
     Returns:
         Agent's response
@@ -72,7 +74,7 @@ def run_assistly(customer_id: str, query: str) -> str:
         "query": query,
         "route": "",
         "response": "",
-        "conversation_history": []
+        "conversation_history": history if history else []
     }
     
     # Run workflow

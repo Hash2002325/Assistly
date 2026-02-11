@@ -30,7 +30,8 @@ def handle_billing(state: AssistlyState) -> AssistlyState:
     
     response = billing_agent.handle_query(
         customer_id=state['customer_id'],
-        query=state['query']
+        query=state['query'],
+        history=state.get('conversation_history', [])
     )
     
     state['response'] = response
@@ -42,7 +43,8 @@ def handle_technical(state: AssistlyState) -> AssistlyState:
     
     response = technical_agent.handle_query(
         customer_id=state['customer_id'],
-        query=state['query']
+        query=state['query'],
+        history=state.get('conversation_history', [])
     )
     
     state['response'] = response
@@ -54,7 +56,8 @@ def handle_sales(state: AssistlyState) -> AssistlyState:
     
     response = sales_agent.handle_query(
         customer_id=state['customer_id'],
-        query=state['query']
+        query=state['query'],
+        history=state.get('conversation_history', [])
     )
     
     state['response'] = response

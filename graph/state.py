@@ -2,7 +2,7 @@
 State definition for LangGraph workflow
 This is the data that flows between agents
 """
-from typing import TypedDict, Literal
+from typing import TypedDict, Literal, List, Dict
 
 class AssistlyState(TypedDict):
     """State object passed between nodes in the graph"""
@@ -10,4 +10,4 @@ class AssistlyState(TypedDict):
     query: str
     route: Literal["billing", "technical", "sales"]
     response: str
-    conversation_history: list
+    conversation_history: List[Dict[str, str]]  # Added: stores chat history
